@@ -5,6 +5,9 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
+app.get('/', (req, res) => {
+    res.send("Welcome to Task Manager API");
+});
 
 // routes
 const authRoutes = require('./routes/authRoutes');
@@ -12,7 +15,9 @@ app.use('/auth', authRoutes);
 const taskRoutes = require('./routes/taskRoutes');
 app.use('/tasks', taskRoutes);
 
-
+app.get('/', (req, res) => {
+    res.send("Welcome to Task Manager API");
+});
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Connected to Atlas"))
