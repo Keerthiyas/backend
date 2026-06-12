@@ -7,13 +7,12 @@ const app = express();
 app.use(express.json());
 
 // routes
-const authRoutes = require('./routes/authroutes');
+const authRoutes = require('./routes/authRoutes');
 app.use('/auth', authRoutes);
 const taskRoutes = require('./routes/taskRoutes');
 app.use('/tasks', taskRoutes);
 
-// DB connection
-require('dotenv').config();
+
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Connected to Atlas"))
